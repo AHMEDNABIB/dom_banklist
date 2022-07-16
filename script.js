@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function () {
   e.preventDefault();
@@ -33,6 +34,8 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+
+// creatin Inserting deleting element
 const header = document.querySelector('.header');
 const message = document.createElement('div');
 
@@ -56,3 +59,48 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
+
+/* Styles */
+
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+message.style.height =Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+
+
+
+btnScrollTo.addEventListener('click', function (e) {
+
+  /* Old way */
+  // const s1coords = section1.getBoundingClientRect();
+  // console.log(s1coords);
+
+  // console.log(e.target.getBoundingClientRect());
+
+  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  // console.log(
+  //   'height/width viewport',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  /* New Away */
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+
