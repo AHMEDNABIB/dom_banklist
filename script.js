@@ -131,6 +131,42 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+/* Tabbed Component  */
+
+const tabs = document.querySelectorAll('.operations__tab');
+
+const tabsContainer = document.querySelector('.operations__tab-container');
+
+const tabsContent = document.querySelectorAll('.operations__content');
+// console.log(tabsContent);
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+  // console.log(clicked)
+
+  //Guard clause
+  if (!clicked) return;
+/* 
+  Acrive Tab */
+  
+  /* Remove all active tab */
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+
+  /* Add active Tab */
+  clicked.classList.add('operations__tab--active');
+
+  // Active content area
+  //console.log(clicked.dataset.tab);
+
+  /* Remove all active content area */
+  tabsContent.forEach(t => t.classList.remove('operations__content--active'));
+
+  /* Add activ content area */
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 ///////////////////////////////////////
 
 // rgb(255,255,255)
@@ -165,3 +201,24 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 //   console.log(this);
 //   console.log(e.currentTarget === this);
 // });
+
+/* DOM Traversing */
+
+// const h1 = document.querySelector('h1');
+
+/* Going dowanrds: child */
+
+// console.log(h1.querySelectorAll('.highlight'));
+
+//console.log(h1.childNodes)
+// console.log(h1.children);
+
+// h1.firstElementChild.style.color = 'white';
+// h1.lastElementChild.style.color = 'orangered'
+
+/* Going upwards: parents */
+
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
