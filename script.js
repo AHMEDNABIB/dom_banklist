@@ -146,9 +146,9 @@ tabsContainer.addEventListener('click', function (e) {
 
   //Guard clause
   if (!clicked) return;
-/* 
+  /* 
   Acrive Tab */
-  
+
   /* Remove all active tab */
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
 
@@ -165,6 +165,34 @@ tabsContainer.addEventListener('click', function (e) {
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
+});
+
+// Menu fade animation
+
+const nav = document.querySelector('.nav');
+
+const handleHover = function (e, opacity) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    //console.log(siblings)
+    const logo = link.closest('.nav').querySelector('img');
+    //console.log(logo)
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = opacity;
+    });
+
+    logo.style.opacity = opacity;
+  }
+};
+
+nav.addEventListener('mouseover', function (e) {
+  handleHover(e, 0.5);
+});
+
+nav.addEventListener('mouseout', function (e) {
+  handleHover(e, 1);
 });
 
 ///////////////////////////////////////
